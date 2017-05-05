@@ -19,4 +19,9 @@ public class TradingNetworkController {
     public Set<TradingNetworkDTO> getTradingNetworks() {
         return new HashSet<>();
     }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public Set<TradingNetworkDTO> test() {
+        return new HashSet<>();
+    }
 }
