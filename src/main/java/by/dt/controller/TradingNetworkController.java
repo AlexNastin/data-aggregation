@@ -20,7 +20,7 @@ public class TradingNetworkController {
         return new HashSet<>();
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(path = "/data-aggregation/v1/tradingNetwork2")
     public Set<TradingNetworkDTO> test() {
         return new HashSet<>();
     }
