@@ -1,21 +1,25 @@
 package by.dt.entity.from.ui;
 
+import by.dt.entity.Entity;
 import by.dt.util.enums.Location;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
+/**
+ * @author Stepanov Nickita on 21.05.2017.
+ * @version 1.0
+ */
 @ApiModel(value = "User settings (Client)")
-public class UserSettingsWrapper implements Serializable {
+public class UserSettingsWrapper implements Entity {
 
     @ApiModelProperty(value = "List of user loyalty cards")
-    private Set<CustomerCardWrapper> customerCards;
+    private List<CustomerCardWrapper> customerCards;
 
     @ApiModelProperty(value = "List of id of interesting users of trading networks")
-    private Set<Long> interestedTradingNetworkIds;
+    private List<Long> interestedTradingNetworkIds;
 
     @ApiModelProperty(value = "Need to send notifications to the user (true/false)")
     private boolean sendNotification;
@@ -26,19 +30,19 @@ public class UserSettingsWrapper implements Serializable {
     public UserSettingsWrapper() {
     }
 
-    public Set<CustomerCardWrapper> getCustomerCards() {
+    public List<CustomerCardWrapper> getCustomerCards() {
         return customerCards;
     }
 
-    public void setCustomerCards(Set<CustomerCardWrapper> customerCards) {
+    public void setCustomerCards(List<CustomerCardWrapper> customerCards) {
         this.customerCards = customerCards;
     }
 
-    public Set<Long> getInterestedTradingNetworkIds() {
+    public List<Long> getInterestedTradingNetworkIds() {
         return interestedTradingNetworkIds;
     }
 
-    public void setInterestedTradingNetworkIds(Set<Long> interestedTradingNetworkIds) {
+    public void setInterestedTradingNetworkIds(List<Long> interestedTradingNetworkIds) {
         this.interestedTradingNetworkIds = interestedTradingNetworkIds;
     }
 

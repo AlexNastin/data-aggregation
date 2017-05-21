@@ -1,5 +1,6 @@
 package by.dt.entity.to.ui;
 
+import by.dt.entity.Entity;
 import by.dt.util.LocalDateDeserializer;
 import by.dt.util.LocalDateSerializer;
 import by.dt.util.enums.Gender;
@@ -9,12 +10,15 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+/**
+ * @author Stepanov Nickita on 21.05.2017.
+ * @version 1.0
+ */
 @ApiModel(value = "UserDTO (Server)", description = "A user object that includes user settings")
-public class UserDTO implements Serializable {
+public class UserDTO implements Entity {
 
     @ApiModelProperty(value = "Unique user id")
     private Long id;

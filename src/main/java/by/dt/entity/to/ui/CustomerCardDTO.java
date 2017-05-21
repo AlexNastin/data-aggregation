@@ -1,13 +1,17 @@
 package by.dt.entity.to.ui;
 
+import by.dt.entity.Entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * @author Stepanov Nickita on 21.05.2017.
+ * @version 1.0
+ */
 @ApiModel(value = "User loyalty card (Server)")
-public class CustomerCardDTO implements Serializable {
+public class CustomerCardDTO implements Entity {
 
     @ApiModelProperty(value = "Unique card id")
     private Long id;

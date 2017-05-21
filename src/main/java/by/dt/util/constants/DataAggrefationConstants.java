@@ -1,7 +1,8 @@
-package by.dt.util;
+package by.dt.util.constants;
 
 /**
- * @author Stepanov Nickita (CreaRec) on 09.04.2017.
+ * @author Stepanov Nickita on 09.04.2017.
+ * @version 1.0
  */
 public class DataAggrefationConstants {
 

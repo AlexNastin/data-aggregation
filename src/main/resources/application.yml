@@ -1,0 +1,6 @@
+server:
+  port: ${DATA_AGGREGATION_PORT:7070}
+
+url:
+  boao-promtorg: ${BOAO_PROMTORG_HOST:localhost}:${BOAO_PROMTORG_PORT:8091}
+  user-storage: ${USER_STORAGE_HOST:localhost}:${USER_STORAGE_PORT:8092}

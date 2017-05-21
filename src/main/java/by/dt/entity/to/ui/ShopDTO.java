@@ -1,13 +1,17 @@
 package by.dt.entity.to.ui;
 
+import by.dt.entity.Entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * @author Stepanov Nickita on 21.05.2017.
+ * @version 1.0
+ */
 @ApiModel(value = "Shop (Server)")
-public class ShopDTO implements Serializable {
+public class ShopDTO implements Entity {
 
     @ApiModelProperty(value = "Unique shop id")
     private Long id;

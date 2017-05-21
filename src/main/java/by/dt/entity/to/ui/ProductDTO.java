@@ -1,14 +1,18 @@
 package by.dt.entity.to.ui;
 
+import by.dt.entity.Entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author Stepanov Nickita on 21.05.2017.
+ * @version 1.0
+ */
 @ApiModel(value = "Product (Server)")
-public class ProductDTO implements Serializable {
+public class ProductDTO implements Entity {
 
     @ApiModelProperty(value = "Barcode")
     private String barcode;
