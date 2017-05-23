@@ -29,7 +29,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<CategoryDTO> getAllCategories() {
         List<CategoryDTO> categoryDTOS = new ArrayList<>();
-        ResponseEntity<Object> response = boaoPromtorgClient.send(UrlClientConstants.BOAO_PROMTORG.GET_ALL_CATEGORIES);
+        ResponseEntity<Object> response = boaoPromtorgClient.sendGet(UrlClientConstants.BOAO_PROMTORG.GET_ALL_CATEGORIES);
         if (response != null) {
             List<CategoryWrapper> categoryWrappers = (List<CategoryWrapper>) response.getBody();
             categoryWrappers.forEach(item -> categoryDTOS.add(new CategoryDTO(item.getId(), item.getName(), item.getParentCategoryId())));

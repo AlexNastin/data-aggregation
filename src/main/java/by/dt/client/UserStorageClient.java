@@ -14,27 +14,27 @@ import java.util.Properties;
  * @version 1.0
  */
 @Component
-public class BoaoPromtorgClient {
+public class UserStorageClient {
 
     private final RestTemplate rt;
     private final UrlConfiguration urlConfiguration;
 
     @Autowired
-    public BoaoPromtorgClient(RestTemplate rt, UrlConfiguration urlConfiguration) {
+    public UserStorageClient(RestTemplate rt, UrlConfiguration urlConfiguration) {
         this.rt = rt;
         this.urlConfiguration = urlConfiguration;
     }
 
     public ResponseEntity<Object> sendPost(String url, Object entity) {
-        return rt.postForEntity(urlConfiguration.getUrlBoaoPromtorg() + url, entity, Object.class);
+        return rt.postForEntity(urlConfiguration.getUrlUserStorage() + url, entity, Object.class);
     }
 
     public ResponseEntity<Object> sendGet(String url) {
-        return rt.getForEntity(urlConfiguration.getUrlBoaoPromtorg() + url, Object.class);
+        return rt.getForEntity(urlConfiguration.getUrlUserStorage() + url, Object.class);
     }
 
     public ResponseEntity<Object> sendPut(String url, Object entity, Properties uriParameters) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(urlConfiguration.getUrlBoaoPromtorg() + url);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(urlConfiguration.getUrlUserStorage() + url);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Object> httpEntity = new HttpEntity<>(entity, headers);
