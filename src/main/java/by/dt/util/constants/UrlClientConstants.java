@@ -10,10 +10,11 @@ public class UrlClientConstants {
         private static final String GENERAL_URL = "/boao-promtorg/v1";
 
         public static final String GET_ALL_CATEGORIES = GENERAL_URL + "/categories";
-        public static final String PUT_INTERESTED_CATEGORIES = GENERAL_URL + "/{id}/settings/interestedCategories";
     }
 
     public final static class USER_STORAGE {
         private static final String GENERAL_URL = "/user-storage/v1";
+
+        public static final String PUT_INTERESTED_CATEGORIES = GENERAL_URL + "/{id}/settings/interestedCategories";
     }
 }

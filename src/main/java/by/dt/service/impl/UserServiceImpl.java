@@ -26,6 +26,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity updateInterestedCategories(String idUser, List<String> interestedCategoryIds, Properties uriParameters) {
-        return userStorageClient.sendPut(UrlClientConstants.BOAO_PROMTORG.PUT_INTERESTED_CATEGORIES, interestedCategoryIds, uriParameters);
+        return userStorageClient.sendPut(UrlClientConstants.USER_STORAGE.PUT_INTERESTED_CATEGORIES, interestedCategoryIds, uriParameters);
     }
 }
