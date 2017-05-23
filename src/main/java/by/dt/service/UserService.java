@@ -1,5 +1,7 @@
 package by.dt.service;
 
+import by.dt.entity.from.ui.RegistrationDataWrapper;
+import by.dt.entity.to.ui.UserDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -12,4 +14,6 @@ import java.util.Properties;
 public interface UserService {
 
     ResponseEntity updateInterestedCategories(String idUser, List<String> interestedCategoryIds, Properties uriParameters);
+
+    UserDTO userRegistration(RegistrationDataWrapper registrationDataWrapper);
 }

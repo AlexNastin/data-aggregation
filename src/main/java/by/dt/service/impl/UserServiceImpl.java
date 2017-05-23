@@ -1,6 +1,8 @@
 package by.dt.service.impl;
 
 import by.dt.client.UserStorageClient;
+import by.dt.entity.from.ui.RegistrationDataWrapper;
+import by.dt.entity.to.ui.UserDTO;
 import by.dt.service.UserService;
 import by.dt.util.constants.UrlClientConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +29,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity updateInterestedCategories(String idUser, List<String> interestedCategoryIds, Properties uriParameters) {
         return userStorageClient.sendPut(UrlClientConstants.USER_STORAGE.PUT_INTERESTED_CATEGORIES, interestedCategoryIds, uriParameters);
+    }
+
+    @Override
+    public UserDTO userRegistration(RegistrationDataWrapper registrationDataWrapper) {
+        return (UserDTO) userStorageClient.sendPost(UrlClientConstants.USER_STORAGE.POST_REGISTRATION, registrationDataWrapper).getBody();
     }
 }

@@ -16,5 +16,6 @@ public class UrlClientConstants {
         private static final String GENERAL_URL = "/user-storage/v1";
 
         public static final String PUT_INTERESTED_CATEGORIES = GENERAL_URL + "/{id}/settings/interestedCategories";
+        public static final String POST_REGISTRATION = GENERAL_URL + "/registration";
     }
 }

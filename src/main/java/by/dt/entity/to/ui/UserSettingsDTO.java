@@ -15,14 +15,17 @@ import java.util.Objects;
 @ApiModel(value = "User settings (Server)")
 public class UserSettingsDTO implements Entity {
 
-    @ApiModelProperty(value = "List of user loyalty cards")
-    private List<CustomerCardDTO> customerCardDTOS;
+    @ApiModelProperty(value = "List of id user loyalty cards")
+    private List<String> customerCards;
 
     @ApiModelProperty(value = "List of id of interesting users of trading networks")
-    private List<Long> interestedTradingNetworkIds;
+    private List<String> interestedTradingNetworkIds;
 
-    @ApiModelProperty(value = "Need to send notifications to the user (true/false)")
-    private boolean sendNotification;
+    @ApiModelProperty(value = "Notification settings")
+    private NotificationDTO notification;
+
+    @ApiModelProperty(value = "List of id of interesting users of categories")
+    private List<String> interestedCategoryIds;
 
     @ApiModelProperty(value = "Default location for search")
     private Location locationMode;
@@ -30,28 +33,36 @@ public class UserSettingsDTO implements Entity {
     public UserSettingsDTO() {
     }
 
-    public List<CustomerCardDTO> getCustomerCardDTOS() {
-        return customerCardDTOS;
+    public List<String> getCustomerCards() {
+        return customerCards;
     }
 
-    public void setCustomerCardDTOS(List<CustomerCardDTO> customerCardDTOS) {
-        this.customerCardDTOS = customerCardDTOS;
+    public void setCustomerCards(List<String> customerCards) {
+        this.customerCards = customerCards;
     }
 
-    public List<Long> getInterestedTradingNetworkIds() {
+    public List<String> getInterestedTradingNetworkIds() {
         return interestedTradingNetworkIds;
     }
 
-    public void setInterestedTradingNetworkIds(List<Long> interestedTradingNetworkIds) {
+    public void setInterestedTradingNetworkIds(List<String> interestedTradingNetworkIds) {
         this.interestedTradingNetworkIds = interestedTradingNetworkIds;
     }
 
-    public boolean isSendNotification() {
-        return sendNotification;
+    public NotificationDTO getNotification() {
+        return notification;
     }
 
-    public void setSendNotification(boolean sendNotification) {
-        this.sendNotification = sendNotification;
+    public void setNotification(NotificationDTO notification) {
+        this.notification = notification;
+    }
+
+    public List<String> getInterestedCategoryIds() {
+        return interestedCategoryIds;
+    }
+
+    public void setInterestedCategoryIds(List<String> interestedCategoryIds) {
+        this.interestedCategoryIds = interestedCategoryIds;
     }
 
     public Location getLocationMode() {
@@ -65,25 +76,27 @@ public class UserSettingsDTO implements Entity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof UserSettingsDTO)) return false;
         UserSettingsDTO that = (UserSettingsDTO) o;
-        return sendNotification == that.sendNotification &&
-                Objects.equals(customerCardDTOS, that.customerCardDTOS) &&
+        return Objects.equals(customerCards, that.customerCards) &&
                 Objects.equals(interestedTradingNetworkIds, that.interestedTradingNetworkIds) &&
+                Objects.equals(notification, that.notification) &&
+                Objects.equals(interestedCategoryIds, that.interestedCategoryIds) &&
                 locationMode == that.locationMode;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(customerCardDTOS, interestedTradingNetworkIds, sendNotification, locationMode);
+        return Objects.hash(customerCards, interestedTradingNetworkIds, notification, interestedCategoryIds, locationMode);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("UserSettingsDTO{");
-        sb.append("customerCardDTOS=").append(customerCardDTOS);
+        sb.append("customerCards=").append(customerCards);
         sb.append(", interestedTradingNetworkIds=").append(interestedTradingNetworkIds);
-        sb.append(", sendNotification=").append(sendNotification);
+        sb.append(", notification=").append(notification);
+        sb.append(", interestedCategoryIds=").append(interestedCategoryIds);
         sb.append(", locationMode=").append(locationMode);
         sb.append('}');
         return sb.toString();

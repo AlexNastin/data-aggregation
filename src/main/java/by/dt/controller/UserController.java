@@ -35,7 +35,7 @@ public class UserController {
     @ApiOperation(value = "New user registration", notes = "Return a created user", produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(path = "/registration", method = RequestMethod.POST)
     public UserDTO userRegistration(@RequestBody RegistrationDataWrapper registrationDataWrapper) {
-        return new UserDTO();
+        return userService.userRegistration(registrationDataWrapper);
     }
 
     @ApiOperation(value = "UserDTO authentication", notes = "Returns an authorized user", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -4,7 +4,6 @@ import by.dt.entity.Entity;
 import by.dt.util.LocalDateDeserializer;
 import by.dt.util.LocalDateSerializer;
 import by.dt.util.enums.Gender;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModel;
@@ -23,9 +22,11 @@ public class UserDTO implements Entity {
     @ApiModelProperty(value = "Unique user id")
     private Long id;
 
-    @JsonProperty(required = true)
     @ApiModelProperty(value = "Login", required = true, example = "John_Smith")
     private String login;
+
+    @ApiModelProperty(value = "Password")
+    private String password;
 
     @ApiModelProperty(value = "Name of user", example = "John")
     private String name;
@@ -47,6 +48,9 @@ public class UserDTO implements Entity {
     @ApiModelProperty(value = "Phone number", example = "375291234567")
     private String numberPhone;
 
+    @ApiModelProperty(value = "User`s address")
+    private String address;
+
     @ApiModelProperty(value = "Coordinate X", example = "53.875114")
     private String coordinateX;
 
@@ -54,7 +58,7 @@ public class UserDTO implements Entity {
     private String coordinateY;
 
     @ApiModelProperty(value = "User settings")
-    private UserSettingsDTO userSettingsDTO;
+    private UserSettingsDTO userSettings;
 
     public UserDTO() {
     }
@@ -73,6 +77,14 @@ public class UserDTO implements Entity {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -123,6 +135,14 @@ public class UserDTO implements Entity {
         this.numberPhone = numberPhone;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getCoordinateX() {
         return coordinateX;
     }
@@ -139,35 +159,37 @@ public class UserDTO implements Entity {
         this.coordinateY = coordinateY;
     }
 
-    public UserSettingsDTO getUserSettingsDTO() {
-        return userSettingsDTO;
+    public UserSettingsDTO getUserSettings() {
+        return userSettings;
     }
 
-    public void setUserSettingsDTO(UserSettingsDTO userSettingsDTO) {
-        this.userSettingsDTO = userSettingsDTO;
+    public void setUserSettings(UserSettingsDTO userSettings) {
+        this.userSettings = userSettings;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserDTO that = (UserDTO) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(login, that.login) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(surname, that.surname) &&
-                Objects.equals(birthday, that.birthday) &&
-                gender == that.gender &&
-                Objects.equals(email, that.email) &&
-                Objects.equals(numberPhone, that.numberPhone) &&
-                Objects.equals(coordinateX, that.coordinateX) &&
-                Objects.equals(coordinateY, that.coordinateY) &&
-                Objects.equals(userSettingsDTO, that.userSettingsDTO);
+        if (!(o instanceof UserDTO)) return false;
+        UserDTO userDTO = (UserDTO) o;
+        return Objects.equals(id, userDTO.id) &&
+                Objects.equals(login, userDTO.login) &&
+                Objects.equals(password, userDTO.password) &&
+                Objects.equals(name, userDTO.name) &&
+                Objects.equals(surname, userDTO.surname) &&
+                Objects.equals(birthday, userDTO.birthday) &&
+                gender == userDTO.gender &&
+                Objects.equals(email, userDTO.email) &&
+                Objects.equals(numberPhone, userDTO.numberPhone) &&
+                Objects.equals(address, userDTO.address) &&
+                Objects.equals(coordinateX, userDTO.coordinateX) &&
+                Objects.equals(coordinateY, userDTO.coordinateY) &&
+                Objects.equals(userSettings, userDTO.userSettings);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, name, surname, birthday, gender, email, numberPhone, coordinateX, coordinateY, userSettingsDTO);
+        return Objects.hash(id, login, password, name, surname, birthday, gender, email, numberPhone, address, coordinateX, coordinateY, userSettings);
     }
 
     @Override
@@ -175,15 +197,17 @@ public class UserDTO implements Entity {
         final StringBuilder sb = new StringBuilder("UserDTO{");
         sb.append("id=").append(id);
         sb.append(", login='").append(login).append('\'');
+        sb.append(", password='").append(password).append('\'');
         sb.append(", name='").append(name).append('\'');
         sb.append(", surname='").append(surname).append('\'');
         sb.append(", birthday=").append(birthday);
         sb.append(", gender=").append(gender);
         sb.append(", email='").append(email).append('\'');
         sb.append(", numberPhone='").append(numberPhone).append('\'');
+        sb.append(", address='").append(address).append('\'');
         sb.append(", coordinateX='").append(coordinateX).append('\'');
         sb.append(", coordinateY='").append(coordinateY).append('\'');
-        sb.append(", userSettingsDTO=").append(userSettingsDTO);
+        sb.append(", userSettings=").append(userSettings);
         sb.append('}');
         return sb.toString();
     }
