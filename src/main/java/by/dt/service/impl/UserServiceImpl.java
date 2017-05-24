@@ -2,6 +2,7 @@ package by.dt.service.impl;
 
 import by.dt.client.UserStorageClient;
 import by.dt.entity.from.ui.RegistrationDataWrapper;
+import by.dt.entity.from.ui.UserSettingsWrapper;
 import by.dt.entity.to.ui.UserDTO;
 import by.dt.service.UserService;
 import by.dt.util.constants.UrlClientConstants;
@@ -44,5 +45,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<String> getFavoriteTradingNetworks(String idUser, Properties uriParameters) {
         return (List<String>) userStorageClient.sendGet(UrlClientConstants.USER_STORAGE.GET_FAVORITE_TRADING_NETWORKS, uriParameters).getBody();
+    }
+
+    @Override
+    public ResponseEntity updateUserSettings(String idUser, UserSettingsWrapper userSettingsWrapper, Properties uriParameters) {
+        return userStorageClient.sendPut(UrlClientConstants.USER_STORAGE.PUT_USER_SETTINGS, userSettingsWrapper, uriParameters);
     }
 }

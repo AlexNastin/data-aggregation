@@ -19,6 +19,7 @@ public class UrlClientConstants {
 
         public static final String PUT_INTERESTED_CATEGORIES = GENERAL_URL + "/{id}/settings/interestedCategories";
         public static final String PUT_FAVORITE_TRADING_NETWORKS = GENERAL_URL + "/{id}/settings/favoriteTradingNetworks";
+        public static final String PUT_USER_SETTINGS = GENERAL_URL + "/{id}/settings";
 
         public static final String POST_REGISTRATION = GENERAL_URL + "/registration";
     }

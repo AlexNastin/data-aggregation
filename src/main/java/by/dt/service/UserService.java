@@ -1,6 +1,7 @@
 package by.dt.service;
 
 import by.dt.entity.from.ui.RegistrationDataWrapper;
+import by.dt.entity.from.ui.UserSettingsWrapper;
 import by.dt.entity.to.ui.UserDTO;
 import org.springframework.http.ResponseEntity;
 
@@ -20,4 +21,6 @@ public interface UserService {
     ResponseEntity updateFavoriteTradingNetworks(String idUser, List<String> favoriteTradingNetworksIds, Properties uriParameters);
 
     List<String> getFavoriteTradingNetworks(String idUser, Properties uriParameters);
+
+    ResponseEntity updateUserSettings(String idUser, UserSettingsWrapper userSettingsWrapper, Properties uriParameters);
 }

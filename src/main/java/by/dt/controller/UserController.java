@@ -1,7 +1,7 @@
 package by.dt.controller;
 
 import by.dt.entity.from.ui.RegistrationDataWrapper;
-import by.dt.entity.from.ui.UserWrapper;
+import by.dt.entity.from.ui.UserSettingsWrapper;
 import by.dt.entity.to.ui.UserDTO;
 import by.dt.service.UserService;
 import io.swagger.annotations.ApiOperation;
@@ -44,13 +44,12 @@ public class UserController {
         return new UserDTO();
     }
 
-    @ApiOperation(value = "Update user and user settings", notes = "Returns the execution status", produces = MediaType.TEXT_HTML_VALUE)
-    /*@ApiResponses(value = {@ApiResponse(code = 200, message = "OK", ),
-            @ApiResponse(code = 404, message = "UserDTO not found", response = String.class)})*/
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity updateUser(@RequestBody UserWrapper user) {
-        return new ResponseEntity(HttpStatus.OK);
+    @ApiOperation(value = "Update all user settings", notes = "Returns the execution status", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/{id}/settings", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updateUserSettings(@RequestBody UserSettingsWrapper userSettingsWrapper, @PathVariable(value = "id") String idUser) {
+        Properties uriParameters = new Properties();
+        uriParameters.put("id", idUser);
+        return userService.updateUserSettings(idUser, userSettingsWrapper, uriParameters);
     }
 
     @ApiOperation(value = "Update favorite categories", notes = "Returns the execution status", produces = MediaType.TEXT_HTML_VALUE)
