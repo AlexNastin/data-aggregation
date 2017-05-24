@@ -1,6 +1,7 @@
 package by.dt.service.impl;
 
 import by.dt.client.UserStorageClient;
+import by.dt.entity.from.ui.PersonalInformationWrapper;
 import by.dt.entity.from.ui.RegistrationDataWrapper;
 import by.dt.entity.from.ui.UserSettingsWrapper;
 import by.dt.entity.to.ui.UserDTO;
@@ -28,12 +29,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity updateFavoriteCategories(String idUser, List<String> favoriteCategoryIds, Properties uriParameters) {
+    public ResponseEntity updateFavoriteCategories(String idUser, List<String> favoriteCategoryIds) {
+        Properties uriParameters = new Properties();
+        uriParameters.put("id", idUser);
         return userStorageClient.sendPut(UrlClientConstants.USER_STORAGE.PUT_FAVORITE_CATEGORIES, favoriteCategoryIds, uriParameters);
     }
 
     @Override
-    public List<String> getFavoriteCategories(String idUser, Properties uriParameters) {
+    public List<String> getFavoriteCategories(String idUser) {
+        Properties uriParameters = new Properties();
+        uriParameters.put("id", idUser);
         return (List<String>) userStorageClient.sendGet(UrlClientConstants.USER_STORAGE.GET_FAVORITE_CATEGORIES, uriParameters).getBody();
     }
 
@@ -43,17 +48,30 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity updateFavoriteTradingNetworks(String idUser, List<String> favoriteTradingNetworksIds, Properties uriParameters) {
+    public ResponseEntity updateFavoriteTradingNetworks(String idUser, List<String> favoriteTradingNetworksIds) {
+        Properties uriParameters = new Properties();
+        uriParameters.put("id", idUser);
         return userStorageClient.sendPut(UrlClientConstants.USER_STORAGE.PUT_FAVORITE_TRADING_NETWORKS, favoriteTradingNetworksIds, uriParameters);
     }
 
     @Override
-    public List<String> getFavoriteTradingNetworks(String idUser, Properties uriParameters) {
+    public List<String> getFavoriteTradingNetworks(String idUser) {
+        Properties uriParameters = new Properties();
+        uriParameters.put("id", idUser);
         return (List<String>) userStorageClient.sendGet(UrlClientConstants.USER_STORAGE.GET_FAVORITE_TRADING_NETWORKS, uriParameters).getBody();
     }
 
     @Override
-    public ResponseEntity updateUserSettings(String idUser, UserSettingsWrapper userSettingsWrapper, Properties uriParameters) {
+    public ResponseEntity updateUserSettings(String idUser, UserSettingsWrapper userSettingsWrapper) {
+        Properties uriParameters = new Properties();
+        uriParameters.put("id", idUser);
         return userStorageClient.sendPut(UrlClientConstants.USER_STORAGE.PUT_USER_SETTINGS, userSettingsWrapper, uriParameters);
+    }
+
+    @Override
+    public ResponseEntity updatePersonalInformation(String idUser, PersonalInformationWrapper personalInformationWrapper) {
+        Properties uriParameters = new Properties();
+        uriParameters.put("id", idUser);
+        return userStorageClient.sendPut(UrlClientConstants.USER_STORAGE.PUT_PERSONAL_INFORMATION, personalInformationWrapper, uriParameters);
     }
 }

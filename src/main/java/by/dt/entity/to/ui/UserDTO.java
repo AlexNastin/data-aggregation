@@ -1,15 +1,9 @@
 package by.dt.entity.to.ui;
 
 import by.dt.entity.Entity;
-import by.dt.util.LocalDateDeserializer;
-import by.dt.util.LocalDateSerializer;
-import by.dt.util.enums.Gender;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -28,8 +22,8 @@ public class UserDTO implements Entity {
     @ApiModelProperty(value = "Password")
     private String password;
 
-    @ApiModelProperty(value = "Personal data of user")
-    private PersonalSettingsDTO personalSettings;
+    @ApiModelProperty(value = "Personal information of user")
+    private PersonalInformationDTO personalInformation;
 
     @ApiModelProperty(value = "User settings")
     private UserSettingsDTO userSettings;
@@ -61,12 +55,12 @@ public class UserDTO implements Entity {
         this.password = password;
     }
 
-    public PersonalSettingsDTO getPersonalSettings() {
-        return personalSettings;
+    public PersonalInformationDTO getPersonalInformation() {
+        return personalInformation;
     }
 
-    public void setPersonalSettings(PersonalSettingsDTO personalSettings) {
-        this.personalSettings = personalSettings;
+    public void setPersonalInformation(PersonalInformationDTO personalInformation) {
+        this.personalInformation = personalInformation;
     }
 
     public UserSettingsDTO getUserSettings() {
@@ -85,13 +79,13 @@ public class UserDTO implements Entity {
         return Objects.equals(id, userDTO.id) &&
                 Objects.equals(login, userDTO.login) &&
                 Objects.equals(password, userDTO.password) &&
-                Objects.equals(personalSettings, userDTO.personalSettings) &&
+                Objects.equals(personalInformation, userDTO.personalInformation) &&
                 Objects.equals(userSettings, userDTO.userSettings);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, password, personalSettings, userSettings);
+        return Objects.hash(id, login, password, personalInformation, userSettings);
     }
 
     @Override
@@ -100,7 +94,7 @@ public class UserDTO implements Entity {
         sb.append("id=").append(id);
         sb.append(", login='").append(login).append('\'');
         sb.append(", password='").append(password).append('\'');
-        sb.append(", personalSettings=").append(personalSettings);
+        sb.append(", personalInformation=").append(personalInformation);
         sb.append(", userSettings=").append(userSettings);
         sb.append('}');
         return sb.toString();

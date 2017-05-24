@@ -12,8 +12,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@ApiModel(value = "Personal data of user")
-public class PersonalSettingsDTO implements Entity {
+@ApiModel(value = "Personal information of user")
+public class PersonalInformationDTO implements Entity {
 
     @ApiModelProperty(value = "Name of user", example = "John")
     private String name;
@@ -44,7 +44,7 @@ public class PersonalSettingsDTO implements Entity {
     @ApiModelProperty(value = "Coordinate Y", example = "27.498202")
     private String coordinateY;
 
-    public PersonalSettingsDTO() {
+    public PersonalInformationDTO() {
     }
 
     public String getName() {
@@ -122,8 +122,8 @@ public class PersonalSettingsDTO implements Entity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PersonalSettingsDTO)) return false;
-        PersonalSettingsDTO that = (PersonalSettingsDTO) o;
+        if (!(o instanceof PersonalInformationDTO)) return false;
+        PersonalInformationDTO that = (PersonalInformationDTO) o;
         return Objects.equals(name, that.name) &&
                 Objects.equals(surname, that.surname) &&
                 Objects.equals(birthday, that.birthday) &&
@@ -142,7 +142,7 @@ public class PersonalSettingsDTO implements Entity {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("PersonalSettingsDTO{");
+        final StringBuilder sb = new StringBuilder("PersonalInformationDTO{");
         sb.append("name='").append(name).append('\'');
         sb.append(", surname='").append(surname).append('\'');
         sb.append(", birthday=").append(birthday);

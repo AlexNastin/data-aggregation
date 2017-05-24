@@ -1,5 +1,6 @@
 package by.dt.controller;
 
+import by.dt.entity.from.ui.PersonalInformationWrapper;
 import by.dt.entity.from.ui.RegistrationDataWrapper;
 import by.dt.entity.from.ui.UserSettingsWrapper;
 import by.dt.entity.to.ui.UserDTO;
@@ -14,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Properties;
 
 /**
  * @author Stepanov Nickita on 21.05.2017.
@@ -47,43 +47,40 @@ public class UserController {
     @ApiOperation(value = "Update all user settings", notes = "Returns the execution status", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(path = "/{id}/settings", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateUserSettings(@RequestBody UserSettingsWrapper userSettingsWrapper, @PathVariable(value = "id") String idUser) {
-        Properties uriParameters = new Properties();
-        uriParameters.put("id", idUser);
-        return userService.updateUserSettings(idUser, userSettingsWrapper, uriParameters);
+        return userService.updateUserSettings(idUser, userSettingsWrapper);
+    }
+
+    @ApiOperation(value = "Обновление персональных данных пользователя", notes = "Возвращает статус выполнения", produces = MediaType.APPLICATION_JSON_VALUE
+            , consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/{id}/personalInformation", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updatePersonalInformation(@RequestBody PersonalInformationWrapper personalInformationWrapper, @PathVariable(value = "id") String idUser) {
+        return userService.updatePersonalInformation(idUser, personalInformationWrapper);
     }
 
     @ApiOperation(value = "Update favorite categories", notes = "Returns the execution status", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/{id}/settings/favoriteCategories", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity updateInterestedCategories(@PathVariable(value = "id") String idUser, @RequestBody List<String> favoriteCategoryIds) {
-        Properties uriParameters = new Properties();
-        uriParameters.put("id", idUser);
-        return userService.updateFavoriteCategories(idUser, favoriteCategoryIds, uriParameters);
+    public ResponseEntity updateFavoriteCategories(@PathVariable(value = "id") String idUser, @RequestBody List<String> favoriteCategoryIds) {
+        return userService.updateFavoriteCategories(idUser, favoriteCategoryIds);
     }
 
     @ApiOperation(value = "Get favorite categories", notes = "Returns the ids favorite categories", produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(path = "/{id}/settings/favoriteCategories", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<String> getFavoriteCategories(@PathVariable(value = "id") String idUser) {
-        Properties uriParameters = new Properties();
-        uriParameters.put("id", idUser);
-        return userService.getFavoriteCategories(idUser, uriParameters);
+        return userService.getFavoriteCategories(idUser);
     }
 
     @ApiOperation(value = "Update favorite trading networks", notes = "Returns the execution status", produces = MediaType.APPLICATION_JSON_VALUE
             , consumes = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(path = "/{id}/settings/favoriteTradingNetworks", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateFavoriteTradingNetworks(@RequestBody List<String> favoriteTradingNetworksIds, @PathVariable(value = "id") String idUser) {
-        Properties uriParameters = new Properties();
-        uriParameters.put("id", idUser);
-        return userService.updateFavoriteTradingNetworks(idUser, favoriteTradingNetworksIds, uriParameters);
+        return userService.updateFavoriteTradingNetworks(idUser, favoriteTradingNetworksIds);
     }
 
     @ApiOperation(value = "Get favorite trading networks", notes = "Returns the ids favorite trading networks", produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(path = "/{id}/settings/favoriteTradingNetworks", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<String> getFavoriteTradingNetworks(@PathVariable(value = "id") String idUser) {
-        Properties uriParameters = new Properties();
-        uriParameters.put("id", idUser);
-        return userService.getFavoriteTradingNetworks(idUser, uriParameters);
+        return userService.getFavoriteTradingNetworks(idUser);
     }
 
 }
