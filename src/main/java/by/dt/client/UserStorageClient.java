@@ -33,6 +33,11 @@ public class UserStorageClient {
         return rt.getForEntity(urlConfiguration.getUrlUserStorage() + url, Object.class);
     }
 
+    public ResponseEntity<Object> sendGet(String url, Properties uriParameters) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(urlConfiguration.getUrlUserStorage() + url);
+        return rt.getForEntity(builder.buildAndExpand(uriParameters).toUri(), Object.class);
+    }
+
     public ResponseEntity<Object> sendPut(String url, Object entity, Properties uriParameters) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(urlConfiguration.getUrlUserStorage() + url);
         HttpHeaders headers = new HttpHeaders();

@@ -62,4 +62,21 @@ public class UserController {
         return userService.updateInterestedCategories(idUser, interestedCategoryIds, uriParameters);
     }
 
+    @ApiOperation(value = "Update favorite trading networks", notes = "Returns the execution status", produces = MediaType.APPLICATION_JSON_VALUE
+            , consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/{id}/settings/favoriteTradingNetworks", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updateFavoriteTradingNetworks(@RequestBody List<String> favoriteTradingNetworksIds, @PathVariable(value = "id") String idUser) {
+        Properties uriParameters = new Properties();
+        uriParameters.put("id", idUser);
+        return userService.updateFavoriteTradingNetworks(idUser, favoriteTradingNetworksIds, uriParameters);
+    }
+
+    @ApiOperation(value = "Get favorite trading networks", notes = "Returns the ids favorite trading networks", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/{id}/settings/favoriteTradingNetworks", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<String> getFavoriteTradingNetworks(@PathVariable(value = "id") String idUser) {
+        Properties uriParameters = new Properties();
+        uriParameters.put("id", idUser);
+        return userService.getFavoriteTradingNetworks(idUser, uriParameters);
+    }
+
 }

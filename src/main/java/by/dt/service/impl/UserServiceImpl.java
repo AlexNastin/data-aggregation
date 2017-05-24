@@ -35,4 +35,14 @@ public class UserServiceImpl implements UserService {
     public UserDTO userRegistration(RegistrationDataWrapper registrationDataWrapper) {
         return (UserDTO) userStorageClient.sendPost(UrlClientConstants.USER_STORAGE.POST_REGISTRATION, registrationDataWrapper).getBody();
     }
+
+    @Override
+    public ResponseEntity updateFavoriteTradingNetworks(String idUser, List<String> favoriteTradingNetworksIds, Properties uriParameters) {
+        return userStorageClient.sendPut(UrlClientConstants.USER_STORAGE.PUT_FAVORITE_TRADING_NETWORKS, favoriteTradingNetworksIds, uriParameters);
+    }
+
+    @Override
+    public List<String> getFavoriteTradingNetworks(String idUser, Properties uriParameters) {
+        return (List<String>) userStorageClient.sendGet(UrlClientConstants.USER_STORAGE.GET_FAVORITE_TRADING_NETWORKS, uriParameters).getBody();
+    }
 }

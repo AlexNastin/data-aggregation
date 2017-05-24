@@ -16,4 +16,8 @@ public interface UserService {
     ResponseEntity updateInterestedCategories(String idUser, List<String> interestedCategoryIds, Properties uriParameters);
 
     UserDTO userRegistration(RegistrationDataWrapper registrationDataWrapper);
+
+    ResponseEntity updateFavoriteTradingNetworks(String idUser, List<String> favoriteTradingNetworksIds, Properties uriParameters);
+
+    List<String> getFavoriteTradingNetworks(String idUser, Properties uriParameters);
 }
