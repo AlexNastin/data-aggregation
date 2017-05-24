@@ -1,13 +1,13 @@
 package by.dt.entity.to.ui;
 
+import by.dt.entity.Entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 @ApiModel("Notification settings")
-public class NotificationDTO implements Serializable {
+public class NotificationDTO implements Entity {
 
     @ApiModelProperty(value = "General setting. On or off notifications")
     private boolean sendNotification;

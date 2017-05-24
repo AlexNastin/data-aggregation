@@ -28,34 +28,8 @@ public class UserDTO implements Entity {
     @ApiModelProperty(value = "Password")
     private String password;
 
-    @ApiModelProperty(value = "Name of user", example = "John")
-    private String name;
-
-    @ApiModelProperty(value = "Last name of user", example = "Smith")
-    private String surname;
-
-    @ApiModelProperty(value = "Date of birth")
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate birthday;
-
-    @ApiModelProperty(value = "Sex")
-    private Gender gender;
-
-    @ApiModelProperty(value = "E-mail", example = "John_Smith@gmail.com")
-    private String email;
-
-    @ApiModelProperty(value = "Phone number", example = "375291234567")
-    private String numberPhone;
-
-    @ApiModelProperty(value = "User`s address")
-    private String address;
-
-    @ApiModelProperty(value = "Coordinate X", example = "53.875114")
-    private String coordinateX;
-
-    @ApiModelProperty(value = "Coordinate Y", example = "27.498202")
-    private String coordinateY;
+    @ApiModelProperty(value = "Personal data of user")
+    private PersonalSettingsDTO personalSettings;
 
     @ApiModelProperty(value = "User settings")
     private UserSettingsDTO userSettings;
@@ -87,76 +61,12 @@ public class UserDTO implements Entity {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public PersonalSettingsDTO getPersonalSettings() {
+        return personalSettings;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public LocalDate getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNumberPhone() {
-        return numberPhone;
-    }
-
-    public void setNumberPhone(String numberPhone) {
-        this.numberPhone = numberPhone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCoordinateX() {
-        return coordinateX;
-    }
-
-    public void setCoordinateX(String coordinateX) {
-        this.coordinateX = coordinateX;
-    }
-
-    public String getCoordinateY() {
-        return coordinateY;
-    }
-
-    public void setCoordinateY(String coordinateY) {
-        this.coordinateY = coordinateY;
+    public void setPersonalSettings(PersonalSettingsDTO personalSettings) {
+        this.personalSettings = personalSettings;
     }
 
     public UserSettingsDTO getUserSettings() {
@@ -175,21 +85,13 @@ public class UserDTO implements Entity {
         return Objects.equals(id, userDTO.id) &&
                 Objects.equals(login, userDTO.login) &&
                 Objects.equals(password, userDTO.password) &&
-                Objects.equals(name, userDTO.name) &&
-                Objects.equals(surname, userDTO.surname) &&
-                Objects.equals(birthday, userDTO.birthday) &&
-                gender == userDTO.gender &&
-                Objects.equals(email, userDTO.email) &&
-                Objects.equals(numberPhone, userDTO.numberPhone) &&
-                Objects.equals(address, userDTO.address) &&
-                Objects.equals(coordinateX, userDTO.coordinateX) &&
-                Objects.equals(coordinateY, userDTO.coordinateY) &&
+                Objects.equals(personalSettings, userDTO.personalSettings) &&
                 Objects.equals(userSettings, userDTO.userSettings);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, password, name, surname, birthday, gender, email, numberPhone, address, coordinateX, coordinateY, userSettings);
+        return Objects.hash(id, login, password, personalSettings, userSettings);
     }
 
     @Override
@@ -198,15 +100,7 @@ public class UserDTO implements Entity {
         sb.append("id=").append(id);
         sb.append(", login='").append(login).append('\'');
         sb.append(", password='").append(password).append('\'');
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", surname='").append(surname).append('\'');
-        sb.append(", birthday=").append(birthday);
-        sb.append(", gender=").append(gender);
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", numberPhone='").append(numberPhone).append('\'');
-        sb.append(", address='").append(address).append('\'');
-        sb.append(", coordinateX='").append(coordinateX).append('\'');
-        sb.append(", coordinateY='").append(coordinateY).append('\'');
+        sb.append(", personalSettings=").append(personalSettings);
         sb.append(", userSettings=").append(userSettings);
         sb.append('}');
         return sb.toString();
