@@ -28,8 +28,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity updateInterestedCategories(String idUser, List<String> interestedCategoryIds, Properties uriParameters) {
-        return userStorageClient.sendPut(UrlClientConstants.USER_STORAGE.PUT_INTERESTED_CATEGORIES, interestedCategoryIds, uriParameters);
+    public ResponseEntity updateFavoriteCategories(String idUser, List<String> favoriteCategoryIds, Properties uriParameters) {
+        return userStorageClient.sendPut(UrlClientConstants.USER_STORAGE.PUT_FAVORITE_CATEGORIES, favoriteCategoryIds, uriParameters);
+    }
+
+    @Override
+    public List<String> getFavoriteCategories(String idUser, Properties uriParameters) {
+        return (List<String>) userStorageClient.sendGet(UrlClientConstants.USER_STORAGE.GET_FAVORITE_CATEGORIES, uriParameters).getBody();
     }
 
     @Override

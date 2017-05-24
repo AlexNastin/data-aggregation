@@ -54,11 +54,19 @@ public class UserController {
 
     @ApiOperation(value = "Update favorite categories", notes = "Returns the execution status", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/{id}/settings/interestedCategories", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity updateInterestedCategories(@PathVariable(value = "id") String idUser, @RequestBody List<String> interestedCategoryIds) {
+    @RequestMapping(path = "/{id}/settings/favoriteCategories", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updateInterestedCategories(@PathVariable(value = "id") String idUser, @RequestBody List<String> favoriteCategoryIds) {
         Properties uriParameters = new Properties();
         uriParameters.put("id", idUser);
-        return userService.updateInterestedCategories(idUser, interestedCategoryIds, uriParameters);
+        return userService.updateFavoriteCategories(idUser, favoriteCategoryIds, uriParameters);
+    }
+
+    @ApiOperation(value = "Get favorite categories", notes = "Returns the ids favorite categories", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/{id}/settings/favoriteCategories", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<String> getFavoriteCategories(@PathVariable(value = "id") String idUser) {
+        Properties uriParameters = new Properties();
+        uriParameters.put("id", idUser);
+        return userService.getFavoriteCategories(idUser, uriParameters);
     }
 
     @ApiOperation(value = "Update favorite trading networks", notes = "Returns the execution status", produces = MediaType.APPLICATION_JSON_VALUE

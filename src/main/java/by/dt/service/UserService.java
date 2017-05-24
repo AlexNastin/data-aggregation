@@ -14,7 +14,9 @@ import java.util.Properties;
  */
 public interface UserService {
 
-    ResponseEntity updateInterestedCategories(String idUser, List<String> interestedCategoryIds, Properties uriParameters);
+    ResponseEntity updateFavoriteCategories(String idUser, List<String> favoriteCategoryIds, Properties uriParameters);
+
+    List<String> getFavoriteCategories(String idUser, Properties uriParameters);
 
     UserDTO userRegistration(RegistrationDataWrapper registrationDataWrapper);
 

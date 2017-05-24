@@ -15,9 +15,10 @@ public class UrlClientConstants {
     public final static class USER_STORAGE {
         private static final String GENERAL_URL = "/user-storage/v1";
 
+        public static final String GET_FAVORITE_CATEGORIES = GENERAL_URL + "/{id}/settings/favoriteCategories";
         public static final String GET_FAVORITE_TRADING_NETWORKS = GENERAL_URL + "/{id}/settings/favoriteTradingNetworks";
 
-        public static final String PUT_INTERESTED_CATEGORIES = GENERAL_URL + "/{id}/settings/interestedCategories";
+        public static final String PUT_FAVORITE_CATEGORIES = GENERAL_URL + "/{id}/settings/favoriteCategories";
         public static final String PUT_FAVORITE_TRADING_NETWORKS = GENERAL_URL + "/{id}/settings/favoriteTradingNetworks";
         public static final String PUT_USER_SETTINGS = GENERAL_URL + "/{id}/settings";
 
